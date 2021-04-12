@@ -1,9 +1,0 @@
-.main-panel {
-  width: 800px;
-  min-height: 460px;
-  padding: 30px;
-  background-color: #c9cccddc;
-  border-radius: 3px;
-  overflow-x: auto;
-  border: 10px solid #c9cccd00;
-}

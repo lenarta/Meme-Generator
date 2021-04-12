@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import PasswordStrength from '../../components/PasswordStrength';
 import './Register.css';
 
 const Register = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [kingdomName, setKingdomName] = useState('');
   const [error, setError] = useState(null);
   const [inputStatus, setInputStatus] = useState('register-input-OK');
-  const history = useHistory();
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userData = { userName, password, kingdomName };
+    const userData = { userName, password };
     const URL = process.env.REACT_APP_API_URL;
 
     try {
@@ -29,9 +25,6 @@ const Register = () => {
       if (response.status !== 200) {
         throw Error(responseBody.error);
       }
-
-      const path = `/register/map/${responseBody.kingdomId}`;
-      history.push(path);
     } catch (err) {
       console.log(err.message);
       setError(err.message);
@@ -42,7 +35,7 @@ const Register = () => {
   return (
     <div className="register-page">
       <div className="register">
-        <h1 className="register-h1">Tribes of Gymnocercus</h1>
+        <h1 className="register-h1">Meme generator</h1>
         <form className="register-form" onSubmit={handleSubmit}>
           <input
             className={inputStatus}
@@ -51,7 +44,7 @@ const Register = () => {
             placeholder="Username"
             minLength="3"
             value={userName}
-            onChange={e => {
+            onChange={(e) => {
               setUserName(e.target.value);
               setInputStatus('register-input-OK');
               setError(null);
@@ -64,24 +57,13 @@ const Register = () => {
             placeholder="Password"
             minLength="8"
             value={password}
-            onChange={e => {
+            onChange={(e) => {
               setPassword(e.target.value);
               setInputStatus('register-input-OK');
               setError(null);
             }}
           />
-          <PasswordStrength password={password} />
-          <input
-            className={inputStatus}
-            type="text"
-            placeholder="Kingdom name"
-            value={kingdomName}
-            onChange={e => {
-              setKingdomName(e.target.value);
-              setInputStatus('register-input-OK');
-              setError(null);
-            }}
-          />
+
           <div className="errorBox">
             {error && (
               <div className="input-error-message">

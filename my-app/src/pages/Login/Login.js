@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import jwt from 'jsonwebtoken';
-import {
-  loadUserToken,
-  loadUserTokenPayload,
-} from '../../actions/loginActions';
+
 import './Login.css';
 
 const Login = () => {
@@ -16,9 +12,7 @@ const Login = () => {
   const [inputStatus, setInputStatus] = useState('login-input-OK');
   const history = useHistory();
 
-  const dispatch = useDispatch();
-
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const userData = { userName, password };
@@ -39,8 +33,8 @@ const Login = () => {
       const decodedJWTToken = jwt.decode(responseBody.token, {
         complete: true,
       });
-      dispatch(loadUserToken(responseBody.token));
-      dispatch(loadUserTokenPayload(decodedJWTToken.payload));
+      console.log(responseBody.token);
+      console.log(decodedJWTToken.payload);
       const cookie = new Cookies();
       cookie.set('accessToken', responseBody.token, {
         path: '/',
@@ -65,7 +59,7 @@ const Login = () => {
             placeholder="Username"
             minLength="3"
             value={userName}
-            onChange={e => {
+            onChange={(e) => {
               setUserName(e.target.value);
               setInputStatus('login-input-OK');
               setError(null);
@@ -78,7 +72,7 @@ const Login = () => {
             placeholder="Password"
             minLength="8"
             value={password}
-            onChange={e => {
+            onChange={(e) => {
               setPassword(e.target.value);
               setInputStatus('login-input-OK');
               setError(null);

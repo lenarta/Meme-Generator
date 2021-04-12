@@ -1,25 +1,15 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import './Header.css';
 import { Link } from 'react-router-dom';
-import Cookies from 'universal-cookie';
-import deleteStoreAction from '../../actions/deleteStore';
 
 const Header = () => {
-  const cookie = new Cookies();
-  const kingdom = useSelector(state => state.login.data.kingdom);
-  const token = useSelector(state => state.login.token);
-  const accessToken = new Cookies().get('accessToken');
-  const dispatch = useDispatch();
-
-  const handleLogoutClick = () => {
-    cookie.remove('accessToken');
-    dispatch(deleteStoreAction());
-  };
+  /* const handleLogoutClick = () => {
+    console.log('')
+  }; */
 
   const setHeaderToLogin = (
     <nav className="header">
-      <h1>Tribes of Gymnocercus</h1>
+      <h1>Meme Generator</h1>
       <div className="headerLinks">
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
@@ -27,20 +17,19 @@ const Header = () => {
     </nav>
   );
 
-  const setHeaderToMain = (
+  /* const setHeaderToMain = (
     <nav className="header">
-      <Link to="/main/building">
-        <h1>{kingdom.kingdomName}</h1>
+      <Link to="/main">
+        <h1>Username</h1>
       </Link>
       <div className="headerLinks">
-        <Link to="/settings">Settings</Link>
         <Link to="/login" onClick={handleLogoutClick}>
           Logout
         </Link>
       </div>
     </nav>
-  );
-  return token || accessToken ? setHeaderToMain : setHeaderToLogin;
+  ); */
+  return setHeaderToLogin;
 };
 
 export default Header;
