@@ -3,6 +3,7 @@ import {
   ErrorComponent,
   LoadingComponent,
 } from '../ProcessMessages/ProcessMessages';
+import './Feed.css';
 
 export const Feed = () => {
   const [isLoaded, setIsLoaded] = useState(false);

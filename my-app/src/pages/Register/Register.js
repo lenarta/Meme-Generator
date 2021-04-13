@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Register.css';
 
 const Register = () => {
-  const [userName, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [inputStatus, setInputStatus] = useState('register-input-OK');
@@ -10,13 +10,15 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userData = { userName, password };
+    const userData = { username, password };
     const URL = process.env.REACT_APP_API_URL;
+    console.log(userData);
 
     try {
-      const response = await fetch(`${URL}/api/register`, {
+      const response = await fetch(`http://81.0.84.195:8080/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        //mode: 'no-cors',
         body: JSON.stringify(userData),
       });
 
@@ -43,9 +45,9 @@ const Register = () => {
             required
             placeholder="Username"
             minLength="3"
-            value={userName}
+            value={username}
             onChange={(e) => {
-              setUserName(e.target.value);
+              setUsername(e.target.value);
               setInputStatus('register-input-OK');
               setError(null);
             }}

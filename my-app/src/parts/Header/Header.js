@@ -7,6 +7,8 @@ const Header = () => {
     window.localStorage.getItem('AccessToken')
   );
 
+  //const username =
+
   const handleLogoutClick = () => {
     window.localStorage.removeItem('AccessToken');
     setAccessToken(false);

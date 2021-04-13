@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import Cookies from 'universal-cookie';
+//import Cookies from 'universal-cookie';
 import jwt from 'jsonwebtoken';
 
 import './Login.css';
 
 const Login = () => {
-  const [userName, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [inputStatus, setInputStatus] = useState('login-input-OK');
@@ -15,11 +15,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userData = { userName, password };
-    const URL = process.env.REACT_APP_API_URL;
+    const userData = { username, password };
+    //const URL = process.env.REACT_APP_API_URL;
 
     try {
-      const response = await fetch(`${URL}/api/login`, {
+      const response = await fetch(`http://178.48.165.230:8080/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
@@ -35,11 +35,12 @@ const Login = () => {
       });
       console.log(responseBody.token);
       console.log(decodedJWTToken.payload);
-      const cookie = new Cookies();
+      window.localStorage.setItem('AccessToken', responseBody.token);
+      /* const cookie = new Cookies();
       cookie.set('accessToken', responseBody.token, {
         path: '/',
-      });
-      history.push('/main/building');
+      }); */
+      history.push('/main');
     } catch (err) {
       console.log(err.message);
       setError(err.message);
@@ -58,9 +59,9 @@ const Login = () => {
             required
             placeholder="Username"
             minLength="3"
-            value={userName}
+            value={username}
             onChange={(e) => {
-              setUserName(e.target.value);
+              setUsername(e.target.value);
               setInputStatus('login-input-OK');
               setError(null);
             }}
