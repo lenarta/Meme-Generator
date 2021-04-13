@@ -34,14 +34,18 @@ export const Feed = () => {
 
   const renderMemes = () => {
     return (
-      <div className="content">
-        {memes.map((meme) => {
-          return (
-            <div className="meme" key={meme.id}>
-              <img src={meme.url} alt={meme.name}></img>
-            </div>
-          );
-        })}
+      <div className="mainpanel">
+        <div className="memecontainer">
+          <div className="memes">
+            {memes.map((meme) => {
+              return (
+                <div className="meme" key={meme.id}>
+                  <img src={meme.url} alt={meme.name}></img>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   };

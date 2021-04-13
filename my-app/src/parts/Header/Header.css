@@ -21,4 +21,6 @@
 }
 .header h1 {
   color: white;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }

@@ -11,7 +11,7 @@ const Register = () => {
     e.preventDefault();
 
     const userData = { username, password };
-    const URL = process.env.REACT_APP_API_URL;
+    //const URL = process.env.REACT_APP_API_URL;
     console.log(userData);
 
     try {
@@ -37,7 +37,6 @@ const Register = () => {
   return (
     <div className="register-page">
       <div className="register">
-        <h1 className="register-h1">Meme generator</h1>
         <form className="register-form" onSubmit={handleSubmit}>
           <input
             className={inputStatus}

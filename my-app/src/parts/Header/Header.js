@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Header = () => {
-  const [accessToken, setAccessToken] = useState(
-    window.localStorage.getItem('AccessToken')
-  );
+  const [isToken, setIsToken] = useState(false);
+  const history = useHistory();
 
-  //const username =
+  const checkToken = () => {
+    if (localStorage.getItem('AccessToken')) {
+      setIsToken(true);
+    } else {
+      setIsToken(false);
+    }
+  };
+
+  useEffect(() => {
+    checkToken();
+  }, []);
 
   const handleLogoutClick = () => {
-    window.localStorage.removeItem('AccessToken');
-    setAccessToken(false);
+    localStorage.removeItem('AccessToken');
+    history.push('/main');
+    setIsToken(false);
   };
 
   const setHeaderToLogin = (
@@ -39,7 +49,7 @@ const Header = () => {
       </div>
     </nav>
   );
-  return accessToken ? setHeaderToMain : setHeaderToLogin;
+  return isToken ? setHeaderToMain : setHeaderToLogin;
 };
 
 export default Header;

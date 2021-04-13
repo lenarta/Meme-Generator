@@ -51,7 +51,6 @@ const Login = () => {
   return (
     <div className="login-page">
       <div className="login">
-        <h1 className="login-h1">Tribes of Gymnocercus</h1>
         <form className="login-form" onSubmit={handleSubmit}>
           <input
             className={inputStatus}
@@ -87,7 +86,7 @@ const Login = () => {
               </div>
             )}
           </div>
-          <Link className="login-a" to="/">
+          <Link className="login-a" to="/main">
             Forgot your password?
           </Link>
           <button className="login-btn" type="submit">
