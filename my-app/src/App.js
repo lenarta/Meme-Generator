@@ -7,6 +7,7 @@ import Feed from './parts/Feed/Feed';
 import RootRedirect from './parts/RootRedirect/RootRedirect';
 
 import MemeCreatorGalery from './parts/MemeCreationGalery/MemeCreatorGalery';
+import MemeCreator from './parts/MemeCreator/MemeCreator';
 import './App.css';
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/galery">
             <MemeCreatorGalery />
+          </Route>
+          <Route path="/memecreator">
+            <MemeCreator />
           </Route>
         </Switch>
       </div>

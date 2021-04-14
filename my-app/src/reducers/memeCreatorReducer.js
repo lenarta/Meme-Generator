@@ -1,18 +1,16 @@
 import {
-  LOAD_PICTURE_URL,
+  ADD_PICTURE_URL,
 } from '../constants/actionTypes';
 
 const initialState = {
-  data: {
-    pictureUrl: '',
-  },
+  pictureUrl: '',
 };
 
 function memeMakerReducer(state = initialState, action) {
-  if (action.type === LOAD_PICTURE_URL) {
+  if (action.type === ADD_PICTURE_URL) {
     return {
       ...state,
-      data: action.payload,
+      pictureUrl: action.payload
     };
   }
   return state;

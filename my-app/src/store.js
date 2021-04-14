@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import loginReducer from './reducers/loginReducer';
 import memeReducer from './reducers/memeReducer';
-import memeMakerReducer from './reducers/memeMakerReducer';
+import memeMakerReducer from './reducers/memeCreatorReducer';
 
 const rootReducer = combineReducers({
   login: loginReducer,

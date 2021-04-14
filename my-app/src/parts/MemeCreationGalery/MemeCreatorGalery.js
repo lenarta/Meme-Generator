@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   ErrorComponent,
   LoadingComponent,
 } from '../ProcessMessages/ProcessMessages';
-import { loadPictureUrl } from '../../actions/memeMakerActions';
+import { addPictureUrl } from '../../actions/memeCreatorActions';
 import './MemeCreatorGalery.css';
 
 function MemeCreatorGalery() {
@@ -36,8 +37,7 @@ function MemeCreatorGalery() {
   }, [isLoaded]);
 
   const handleClick = (memeUrl) => {
-    dispatch(loadPictureUrl(memeUrl));
-    console.log(memeUrl);
+    dispatch(addPictureUrl(memeUrl));
   };
 
   const renderMemes = () => {
@@ -48,7 +48,9 @@ function MemeCreatorGalery() {
             {memes.map((meme) => {
               return (
                 <div className="meme" key={meme.id}>
+                  <Link to="/memecreator">
                   <img src={meme.url} alt={meme.name} onClick={() => {handleClick(meme.url);}}></img>
+                  </Link>
                 </div>
               );
             })}
