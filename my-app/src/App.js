@@ -6,6 +6,7 @@ import Register from './pages/Register/Register';
 import Feed from './parts/Feed/Feed';
 import RootRedirect from './parts/RootRedirect/RootRedirect';
 
+import MemeCreatorGalery from './parts/MemeCreationGalery/MemeCreatorGalery';
 import MemeMaker from './pages/MemeMaker/MemeMaker';
 import './App.css';
 
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/galery">
+            <MemeCreatorGalery />
           </Route>
           <Route path="/maker">
             <MemeMaker />

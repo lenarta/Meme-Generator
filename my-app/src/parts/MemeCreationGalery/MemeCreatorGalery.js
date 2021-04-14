@@ -32,6 +32,11 @@ function MemeCreatorGalery() {
     getImages();
   }, [accessToken]);
 
+  const handleClick = (memeUrl) => {
+    //set in store the url, and redirect to /maker!!!
+    console.log(memeUrl);
+  };
+
   const renderMemes = () => {
     return (
       <div className="mainpanel">
@@ -40,7 +45,7 @@ function MemeCreatorGalery() {
             {memes.map((meme) => {
               return (
                 <div className="meme" key={meme.id}>
-                  <img src={meme.url} alt={meme.name}></img>
+                  <img src={meme.url} alt={meme.name} onClick={() => {handleClick(meme.url);}}></img>
                 </div>
               );
             })}
