@@ -6,6 +6,7 @@ import Register from './pages/Register/Register';
 import Feed from './parts/Feed/Feed';
 import RootRedirect from './parts/RootRedirect/RootRedirect';
 
+import MemeMaker from './pages/MemeMaker/MemeMaker';
 import './App.css';
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/maker">
+            <MemeMaker />
           </Route>
         </Switch>
       </div>
