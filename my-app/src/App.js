@@ -19,7 +19,6 @@ function App() {
         <Route path="/">
           <Redirect to="/main" />
         </Route>
-
         <Switch>
           <Route exact path="/main">
             <Feed />
