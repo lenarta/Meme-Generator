@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import Header from './parts/Header/Header';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
@@ -11,6 +16,9 @@ function App() {
     <Router>
       <div className="App">
         <Header />
+        <Route path="/">
+          <Redirect to="/main" />
+        </Route>
 
         <Switch>
           <Route exact path="/main">
