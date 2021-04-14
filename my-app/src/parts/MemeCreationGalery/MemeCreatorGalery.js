@@ -1,56 +1,62 @@
 import React, { useState, useEffect } from 'react';
+import {
+  ErrorComponent,
+  LoadingComponent,
+} from '../ProcessMessages/ProcessMessages';
 import './MemeCreatorGalery.css';
 
-function MemeCreatorGalery(state) {
-  const [memePictures, setMemePictures] = useState([]);
-  const [isErrorOccured, setIsErrorOccured] = useState(false);
+function MemeCreatorGalery() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isErrorOccured, setIsErrorOccured] = useState(false);
+  const accessToken = window.localStorage.getItem('AccessToken');
+  const [memes, setMemes] = useState([]);
+  //console.log(accessToken);
 
   useEffect(() => {
-    const getLeaderList = async () => {
+    const getImages = async () => {
       try {
-        const response = await fetch(
-          `https://api.imgflip.com/get_memes`,
-          {
-            method: 'GET',
-          }
-        );
-
+        const response = await fetch(`https://api.imgflip.com/get_memes`);
         const responseBody = await response.json();
 
         if (response.status !== 200) {
           throw Error(responseBody);
         }
+        setMemes(responseBody.data.memes);
+
         setIsLoaded(true);
-        setMemePictures(responseBody.data.memes);
-        console.log(responseBody);
       } catch (error) {
         console.log(error);
         setIsErrorOccured(true);
       }
     };
-    getLeaderList();
-  }, [isLoaded]);
+    getImages();
+  }, [accessToken]);
 
-  function renderGalery() {
+  const renderMemes = () => {
     return (
-      <div className='galery-container'>
-        {memePictures.map((meme) => {
-          return (
-            <img className='galery-img' src={meme.url} alt={meme.name} key={meme.id} onClick={state.setSelectedMemePictureUrl(meme.url)}></img>
-          );
-        })}
+      <div className="mainpanel">
+        <div className="memecontainer">
+          <div className="memes">
+            {memes.map((meme) => {
+              return (
+                <div className="meme" key={meme.id}>
+                  <img src={meme.url} alt={meme.name}></img>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   };
 
   return isErrorOccured ? (
-    <div>Error</div>
+    <ErrorComponent />
   ) : isLoaded ? (
-    renderGalery()
+    renderMemes()
   ) : (
-    <div>Loading...</div>
-  )
+    <LoadingComponent />
+  );
 }
 
 export default MemeCreatorGalery;
