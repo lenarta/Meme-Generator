@@ -1,5 +1,6 @@
 export const LOAD_USER_TOKEN = 'LOAD_USER_TOKEN';
 export const LOAD_USER_TOKEN_PAYLOAD = 'LOAD_USER_TOKEN_PAYLOAD';
+export const LOAD_PICTURE_URL = 'LOAD_PICTURE_URL';
 export const DELETE_STORE = 'DELETE_STORE';
 export const LOAD_MEMES = 'LOAD_MEMES';
 export const UPDATE_MEME = 'UPDATE_MEME';

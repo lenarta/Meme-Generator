@@ -7,7 +7,6 @@ import Feed from './parts/Feed/Feed';
 import RootRedirect from './parts/RootRedirect/RootRedirect';
 
 import MemeCreatorGalery from './parts/MemeCreationGalery/MemeCreatorGalery';
-import MemeMaker from './pages/MemeMaker/MemeMaker';
 import './App.css';
 
 function App() {
@@ -15,14 +14,14 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Route path="/">
-          <RootRedirect />
+        <Route exact path="/">
+          <RootRedirect to="/main" />
         </Route>
         <Switch>
-          <Route exact path="/main">
+          <Route path="/main">
             <Feed />
           </Route>
-          <Route exact path="/register">
+          <Route path="/register">
             <Register />
           </Route>
           <Route path="/login">
@@ -30,9 +29,6 @@ function App() {
           </Route>
           <Route path="/galery">
             <MemeCreatorGalery />
-          </Route>
-          <Route path="/maker">
-            <MemeMaker />
           </Route>
         </Switch>
       </div>

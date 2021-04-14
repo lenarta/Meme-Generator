@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   ErrorComponent,
   LoadingComponent,
 } from '../ProcessMessages/ProcessMessages';
+import { loadPictureUrl } from '../../actions/memeMakerActions';
 import './MemeCreatorGalery.css';
 
 function MemeCreatorGalery() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isErrorOccured, setIsErrorOccured] = useState(false);
-  const accessToken = window.localStorage.getItem('AccessToken');
+  //const accessToken = window.localStorage.getItem('AccessToken');
   const [memes, setMemes] = useState([]);
-  //console.log(accessToken);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getImages = async () => {
@@ -30,10 +33,10 @@ function MemeCreatorGalery() {
       }
     };
     getImages();
-  }, [accessToken]);
+  }, [isLoaded]);
 
   const handleClick = (memeUrl) => {
-    //set in store the url, and redirect to /maker!!!
+    dispatch(loadPictureUrl(memeUrl));
     console.log(memeUrl);
   };
 
