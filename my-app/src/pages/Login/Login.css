@@ -4,92 +4,75 @@
   justify-content: center;
   align-items: center;
 }
-
 .login {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 40px;
-}
-
-.login-h1 {
-  font-size: 4rem;
-  color: white;
 }
 .login-form {
   width: 420px;
   height: 270px;
   padding: 25px;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #c9cccddc;
   color: white;
 }
-
 [class*='login-input'] {
-  background: transparent;
+  background: white;
   outline: none;
   padding: 10px 0;
   border: 0;
   font-size: 1.3rem;
+  text-align: center;
 }
-
-.login-input-OK {
-  border-bottom: 2px solid #67a835;
-  caret-color: #67a835;
-}
-
 .login-input-ERROR {
   border-bottom: 2px solid #db4437;
   caret-color: #db4437;
 }
-
 .login-btn {
   width: 100px;
   height: 40px;
   border: 0;
-	border-radius: 2px;
-  background-color: #67a835;
+  border-radius: 3px;
+  background-color: black;
   box-shadow: 3px 4px 7px -4px #000000;
   font-weight: bold;
   color: white;
-	cursor:pointer;
-  align-self: flex-end;
-  outline:none
+  cursor: pointer;
+  align-self: center;
+  outline: none;
 }
-
 .login-btn:hover {
-  background-color: #3d6321;
+  background-color: #29bb24;
 }
 .login-btn:active {
-  transform: scale(0.90);
+  transform: scale(0.9);
 }
-
 .login-a {
   text-decoration: none;
   color: #00000088;
 }
-
 .errorBox {
   height: 24px;
 }
-
 .input-error-message {
   color: #db4437;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 }
-
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v78/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialicons/v78/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format('woff2');
 }
-
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
