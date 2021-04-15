@@ -15,10 +15,10 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Route exact path="/">
-          <RootRedirect to="/main" />
-        </Route>
         <Switch>
+          <Route exact path="/">
+            <RootRedirect to="/main" />
+          </Route>
           <Route path="/main">
             <Feed />
           </Route>

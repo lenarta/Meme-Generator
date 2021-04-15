@@ -40,7 +40,7 @@ const MemeCreator = () => {
           value={bottomText}
           onChange={e => setBottomText(e.target.value)}
         />
-        <button onClick={handleClick}>Download</button>
+        <button onClick={handleClick}>Create</button>
       </form>
       <div className='meme-creator-preview-container'>
         <p className='meme-creator-preview-text-top'>{topText}</p>

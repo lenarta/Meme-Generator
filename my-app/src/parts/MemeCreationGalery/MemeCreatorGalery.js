@@ -42,14 +42,20 @@ function MemeCreatorGalery() {
 
   const renderMemes = () => {
     return (
-      <div className="mainpanel">
-        <div className="memecontainer">
-          <div className="memes">
+      <div className="meme-creator-galery-mainpanel">
+        <div className="meme-creator-galery-memecontainer">
+          <div className="meme-creator-galery-memes">
             {memes.map((meme) => {
               return (
-                <div className="meme" key={meme.id}>
+                <div className="meme-creator-galery-postcontainer" key={meme.id}>
                   <Link to="/memecreator">
-                  <img src={meme.url} alt={meme.name} onClick={() => {handleClick(meme.url);}}></img>
+                    <img
+                      className="meme-creator-galery-meme"
+                      key={meme.id}
+                      src={meme.url}
+                      onClick={() => {handleClick(meme.url);}}
+                      alt={meme.name}>
+                    </img>
                   </Link>
                 </div>
               );
