@@ -1,0 +1,74 @@
+.meme-creator-container {
+  margin: auto;
+  width: 800px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 500px;
+  grid-template-rows: 80px 800px;
+  justify-content: center;
+  align-items: center;
+}
+
+.meme-creator-header {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 50px 150px;
+  column-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 80px;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.meme-creator-header-img {
+  width: 50px;
+  height: 50px;
+}
+
+.meme-creator-header-text {
+  color: white;
+  font-weight: bold;
+}
+
+.meme-creator-body {
+  width: 500px;
+  height: 600px;
+}
+
+.meme-creator-form {
+  margin: 10px 0 10px 0;
+}
+
+.meme-creator-preview-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 500px;
+  height: 500px;
+}
+
+.meme-creator-preview-img {
+  height: 100%;
+}
+
+.meme-creator-preview-text-top {
+  margin: 0;
+  position: absolute;
+  top: 3px;
+  font-size: 30px;
+  font-weight: bolder;
+  -webkit-text-stroke: 1.5px black;
+}
+
+.meme-creator-preview-text-bottom {
+  margin: 0;
+  position: absolute;
+  bottom: 3px;
+  font-size: 30px;
+  font-weight: bolder;
+  -webkit-text-stroke: 1.5px black;
+}
