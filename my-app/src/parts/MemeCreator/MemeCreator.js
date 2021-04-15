@@ -13,7 +13,6 @@ const MemeCreator = () => {
     e.preventDefault();
 
     console.log('MUHAHAHAHAAA');
-    localStorage.setItem("firstName", "Mark Zuker berg");
   }
 
   return (
