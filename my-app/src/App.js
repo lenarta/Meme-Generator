@@ -1,14 +1,11 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './parts/Header/Header';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Feed from './parts/Feed/Feed';
+import RootRedirect from './parts/RootRedirect/RootRedirect';
+
 import './App.css';
 
 function App() {
@@ -17,7 +14,7 @@ function App() {
       <div className="App">
         <Header />
         <Route path="/">
-          <Redirect to="/main" />
+          <RootRedirect />
         </Route>
         <Switch>
           <Route exact path="/main">
@@ -26,7 +23,6 @@ function App() {
           <Route exact path="/register">
             <Register />
           </Route>
-
           <Route path="/login">
             <Login />
           </Route>
