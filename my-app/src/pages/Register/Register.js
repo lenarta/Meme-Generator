@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Register.css';
 
 const Register = () => {
@@ -6,27 +7,29 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [inputStatus, setInputStatus] = useState('register-input-OK');
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const userData = { username, password };
-    //const URL = process.env.REACT_APP_API_URL;
-    console.log(userData);
+    /* const URL = process.env.REACT_APP_API_URL;
+    console.log(userData, URL); */
 
     try {
       const response = await fetch(`http://81.0.84.195:8080/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        //mode: 'no-cors',
         body: JSON.stringify(userData),
       });
 
       const responseBody = await response.json();
+      console.log(responseBody);
 
       if (response.status !== 200) {
         throw Error(responseBody.error);
       }
+      history.push('/login');
     } catch (err) {
       console.log(err.message);
       setError(err.message);

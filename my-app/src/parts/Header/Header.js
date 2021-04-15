@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import './Header.css';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import deleteStoreAction from '../../actions/deleteStore';
+import './Header.css';
 
 const Header = () => {
-  const [isToken, setIsToken] = useState(false);
+  const cookie = new Cookies();
+  const username = useSelector((state) => state.login.data.sub);
+  const token = useSelector((state) => state.login.token);
+  const accessToken = new Cookies().get('accessToken');
+  const dispatch = useDispatch();
   const history = useHistory();
 
-  const checkToken = () => {
-    if (localStorage.getItem('AccessToken')) {
-      setIsToken(true);
-    } else {
-      setIsToken(false);
-    }
-  };
-
-  useEffect(() => {
-    checkToken();
-  }, []);
-
   const handleLogoutClick = () => {
-    localStorage.removeItem('AccessToken');
-    history.push('/main');
-    setIsToken(false);
+    history.push('/login');
+    cookie.remove('accessToken');
+    dispatch(deleteStoreAction());
   };
 
   const setHeaderToLogin = (
@@ -39,9 +34,10 @@ const Header = () => {
   const setHeaderToMain = (
     <nav className="header">
       <Link to="/main">
-        <h1>Welcome to Meme Society Username</h1>
+        <h1>Welcome to Meme Society</h1>
       </Link>
       <div className="headerLinks">
+        <Link to="/memes"> {username} </Link>
         <Link to="/gallery">Create meme</Link>
         <Link to="/" onClick={handleLogoutClick}>
           Logout
@@ -49,7 +45,7 @@ const Header = () => {
       </div>
     </nav>
   );
-  return isToken ? setHeaderToMain : setHeaderToLogin;
+  return token || accessToken ? setHeaderToMain : setHeaderToLogin;
 };
 
 export default Header;

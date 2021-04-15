@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-//import Cookies from 'universal-cookie';
+import Cookies from 'universal-cookie';
 import jwt from 'jsonwebtoken';
-
+import {
+  loadUserToken,
+  loadUserTokenPayload,
+} from '../../actions/loginActions';
 import './Login.css';
 
 const Login = () => {
@@ -12,18 +16,22 @@ const Login = () => {
   const [inputStatus, setInputStatus] = useState('login-input-OK');
   const history = useHistory();
 
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const userData = { username, password };
-    //const URL = process.env.REACT_APP_API_URL;
+    /* const URL = process.env.REACT_APP_API_URL;
+    console.log(URL); */
 
     try {
-      const response = await fetch(`http://178.48.165.230:8080/login`, {
+      const response = await fetch(`http://81.0.84.195:8080/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
       });
+      console.log(userData);
 
       const responseBody = await response.json();
 
@@ -33,13 +41,13 @@ const Login = () => {
       const decodedJWTToken = jwt.decode(responseBody.token, {
         complete: true,
       });
-      console.log(responseBody.token);
+      dispatch(loadUserToken(responseBody.token));
+      dispatch(loadUserTokenPayload(decodedJWTToken.payload));
       console.log(decodedJWTToken.payload);
-      window.localStorage.setItem('AccessToken', responseBody.token);
-      /* const cookie = new Cookies();
+      const cookie = new Cookies();
       cookie.set('accessToken', responseBody.token, {
         path: '/',
-      }); */
+      });
       history.push('/main');
     } catch (err) {
       console.log(err.message);

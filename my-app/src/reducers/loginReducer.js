@@ -7,9 +7,7 @@ import {
 const initialState = {
   token: '',
   data: {
-    id: null,
     userName: '',
-    iat: null,
   },
 };
 
