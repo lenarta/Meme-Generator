@@ -1,11 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Header from './parts/Header/Header';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Feed from './parts/Feed/Feed';
-import RootRedirect from './parts/RootRedirect/RootRedirect';
-
 import MemeCreatorGalery from './parts/MemeCreationGalery/MemeCreatorGalery';
 import MemeCreator from './parts/MemeCreator/MemeCreator';
 import './App.css';
@@ -17,7 +15,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/">
-            <RootRedirect to="/main" />
+            <Redirect to="/main" />
           </Route>
           <Route path="/main">
             <Feed />
@@ -28,7 +26,7 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/galery">
+          <Route path="/gallery">
             <MemeCreatorGalery />
           </Route>
           <Route path="/memecreator">
